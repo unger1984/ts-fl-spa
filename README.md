@@ -1,4 +1,4 @@
-# PetProject
+# Study Project
 
 SPA for show actual Project from FL.RU
 
