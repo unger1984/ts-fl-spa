@@ -32,6 +32,11 @@
 				fill: var(--color-menu-active);
 			}
 		}
+
+		@media #{$small-mobile} {
+			margin-left: 10px;
+			margin-right: 10px;
+		}
 	}
 
 	&__reload {

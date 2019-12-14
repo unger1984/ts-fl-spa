@@ -1,0 +1,19 @@
+.projects-page {
+	display: flex;
+	flex-direction: column;
+
+	.refresh-view {
+		overflow-y: scroll;
+	}
+
+	&__refresh {
+		display: flex;
+		justify-content: center;
+		padding: 10px;
+
+		img {
+			width: 32px;
+			height: 32px;
+		}
+	}
+}

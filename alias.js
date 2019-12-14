@@ -8,5 +8,6 @@ System.config({
 		'scss/*': './src/scss/*',
 		'ducks/*': './src/ducks/*',
 		'utils/*': './src/utils/*',
+		'models/*': './src/models/*',
 	},
 });

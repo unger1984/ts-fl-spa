@@ -3,7 +3,7 @@ import { AnyAction } from 'redux';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
 import api from 'api/index';
-import { ApiResponseInterface } from '../models/ApiResponseInterface';
+import ApiResponseInterface from '../models/ApiResponseInterface';
 
 /**
  * Constants

@@ -1,4 +1,4 @@
-export interface ApiResponseInterface {
+export default interface ApiResponseInterface {
 	status: boolean;
 	data?: any;
 	error?: {

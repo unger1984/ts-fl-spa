@@ -44,6 +44,7 @@ module.exports = {
 			common: path.resolve(__dirname, '../src/components/common'),
 			ducks: path.resolve(__dirname, '../src/ducks'),
 			helpers: path.resolve(__dirname, '../src/helpers'),
+			models: path.resolve(__dirname, '../src/models'),
 		},
 		plugins: [new DirectoryNamedWebpackPlugin()],
 	},
