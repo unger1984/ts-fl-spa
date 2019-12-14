@@ -29,7 +29,7 @@
     "import/no-cycle": 2,
     "dot-notation": 2,
     "id-length": 2,
-    "no-console": 2,
+    "no-console": 1,
     "no-const-assign": 2,
     "no-dupe-class-members": 2,
     "no-else-return": 2,
@@ -57,6 +57,9 @@
     "react/prop-types": 0
   },
   "settings": {
+    "react": {
+      "version": "detect"
+    },
     "import/resolver": {
       "node": {
         "extensions": [

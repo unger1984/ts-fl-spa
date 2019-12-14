@@ -3,14 +3,14 @@ import React, { ComponentProps } from 'react';
 import './header.scss';
 import images from '../../../images';
 
-interface HeaderProps extends ComponentProps<any> {
+interface HeaderProps extends ComponentProps<'div'> {
 	onReload(): void;
 	preloader: boolean;
 	title: string;
 }
 
 const Header: React.FC<HeaderProps> = ({ preloader, title, onReload }) => {
-	const reload = () => {
+	const reload = (): void => {
 		if (!preloader) {
 			onReload();
 		}

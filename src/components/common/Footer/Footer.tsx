@@ -7,19 +7,19 @@ import images from '../../../images';
 import { toggleFullScreen } from 'helpers/helperFullScreen';
 import Svg from 'common/Svg';
 
-interface FooterProps extends ComponentProps<any> {
+interface FooterProps extends ComponentProps<'div'> {
 	preloader: boolean;
 	onReload(): void;
 }
 
 const Footer: React.FC<FooterProps> = ({ preloader, onReload }) => {
-	const handleReload = () => {
+	const handleReload = (): void => {
 		if (!preloader) {
 			onReload();
 		}
 	};
 
-	const handleFullScreen = () => {
+	const handleFullScreen = (): void => {
 		toggleFullScreen();
 	};
 

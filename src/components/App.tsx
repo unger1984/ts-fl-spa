@@ -14,13 +14,13 @@ const App: React.FC = () => {
 	const appPageRef = useRef<HTMLDivElement>(null);
 	const preloader: boolean = useSelector(uiPreloaderSelector);
 
-	const toTop = () => {
+	const toTop = (): void => {
 		if (appPageRef.current) {
-			appPageRef.current!.scrollTop = 0;
+			appPageRef.current.scrollTop = 0;
 		}
 	};
 
-	const handleReload = () => {
+	const handleReload = (): void => {
 		toTop();
 		dispatch(clearProjectsList());
 		dispatch(getProjectsList());

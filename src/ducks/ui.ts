@@ -8,25 +8,25 @@ export const moduleName = 'ui';
 
 export const SET_PRELOADER = `${moduleName}/SET_PRELOADER`;
 
-export interface UIStateInterface {
+export interface UIState {
 	isPreloader: boolean;
 }
 
-export interface UIActionInterface extends AnyAction {
+export interface UIAction extends AnyAction {
 	readonly type: string;
 	readonly payload: {
 		preloader?: boolean;
 	};
 }
 
-const initialState: UIStateInterface = {
+const initialState: UIState = {
 	isPreloader: false,
 };
 
 /**
  * Reducer
  **/
-export default (state: UIStateInterface = initialState, action: UIActionInterface): UIStateInterface => {
+export default (state: UIState = initialState, action: UIAction): UIState => {
 	const { type, payload } = action;
 
 	switch (type) {
@@ -40,7 +40,7 @@ export default (state: UIStateInterface = initialState, action: UIActionInterfac
 /**
  * Action Creators
  **/
-export const setPreloader = (preloader: boolean): UIActionInterface => ({
+export const setPreloader = (preloader: boolean): UIAction => ({
 	type: SET_PRELOADER,
 	payload: { preloader },
 });
@@ -48,5 +48,5 @@ export const setPreloader = (preloader: boolean): UIActionInterface => ({
 /**
  * Selectors
  **/
-export const uiSelector = (state: { ui: UIStateInterface }): UIStateInterface => state.ui;
-export const uiPreloaderSelector = createSelector(uiSelector, (ui: UIStateInterface) => ui.isPreloader);
+export const uiSelector = (state: { ui: UIState }): UIState => state.ui;
+export const uiPreloaderSelector = createSelector(uiSelector, (ui: UIState) => ui.isPreloader);

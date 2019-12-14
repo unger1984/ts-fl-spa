@@ -1,12 +1,12 @@
 import { createSelector } from 'reselect';
 import { AnyAction } from 'redux';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { plainToClass } from 'class-transformer';
 
 import api from 'api/index';
 import ApiResponseInterface from 'models/ApiResponseInterface';
 import Project from 'models/Project';
-import { setPreloader, UIActionInterface } from 'ducks/ui';
+import { setPreloader } from 'ducks/ui';
+import { ThunkAction } from 'redux-thunk';
 
 /**
  * Constants
@@ -14,34 +14,37 @@ import { setPreloader, UIActionInterface } from 'ducks/ui';
 export const moduleName = 'projects';
 
 export const FETCH = `${moduleName}/FETCH`;
+export const SET_SEEN_TIMEOUT = `${moduleName}/SET_SEEN_TIMEOUT`;
 
-export interface ProjectsStateInterface {
+export interface ProjectsState {
 	list: Project[];
+	seenTimer: number | null;
 }
 
-export interface ProjectsActionInterface extends AnyAction {
+export interface ProjectsAction extends AnyAction {
 	readonly type: string;
 	readonly payload: {
-		list: Project[];
+		list?: Project[];
+		timeout?: number | null;
 	};
 }
 
-const initialState: ProjectsStateInterface = {
+const initialState: ProjectsState = {
 	list: [],
+	seenTimer: null,
 };
 
 /**
  * Reducer
  **/
-export default (
-	state: ProjectsStateInterface = initialState,
-	action: ProjectsActionInterface,
-): ProjectsStateInterface => {
+export default (state: ProjectsState = initialState, action: ProjectsAction): ProjectsState => {
 	const { type, payload } = action;
 
 	switch (type) {
 		case FETCH:
 			return { ...state, list: payload.list || ([] as Project[]) };
+		case SET_SEEN_TIMEOUT:
+			return { ...state, seenTimer: payload.timeout || null };
 		default:
 			return { ...state };
 	}
@@ -50,33 +53,50 @@ export default (
 /**
  * Action Creators
  **/
-export const fetch = (list: Project[]): ProjectsActionInterface => ({
+export const fetch = (list: Project[]): ProjectsAction => ({
 	type: FETCH,
 	payload: { list },
+});
+
+export const setSeenTimeout = (timeout: number | null): ProjectsAction => ({
+	type: SET_SEEN_TIMEOUT,
+	payload: { timeout },
 });
 
 /**
  * Selectors
  **/
-export const projectsSelector = (state: { projects: ProjectsStateInterface }): ProjectsStateInterface => state.projects;
+export const projectsSelector = (state: { projects: ProjectsState }): ProjectsState => state.projects;
 export const projectsListSelector = createSelector(
 	projectsSelector,
-	(projects: ProjectsStateInterface): Project[] => projects.list,
+	(projects: ProjectsState): Project[] => projects.list,
+);
+export const projectsSeenTimeoutSelector = createSelector(
+	projectsSelector,
+	(projects: ProjectsState): number | null => projects.seenTimer,
 );
 
 /**
  * Async actions
  */
-type ProjectsThunkAction = ThunkAction<void, { projects: ProjectsStateInterface }, {}, ProjectsActionInterface>;
-type ProjectsThnkDispatch = ThunkDispatch<
-	{},
-	{ projects: ProjectsStateInterface },
-	ProjectsActionInterface | UIActionInterface
->;
+export const setSeenProjects = () => (
+	dispatch: (action: AnyAction) => void,
+	getState: () => { projects: ProjectsState },
+): void => {
+	const oldList = projectsListSelector(getState());
 
-export const getProjectsList = (): ProjectsThunkAction => (
-	dispatch: ProjectsThnkDispatch,
-	getState: () => { projects: ProjectsStateInterface },
+	const newList = oldList.map(item => {
+		if (item.isNew) {
+			item.isNew = false;
+		}
+		return item;
+	});
+	dispatch(fetch(newList));
+};
+
+export const getProjectsList = (): Function => (
+	dispatch: (action: AnyAction | ThunkAction<void, { projects: ProjectsState }, null, ProjectsAction>) => void,
+	getState: () => { projects: ProjectsState },
 ): void => {
 	const oldList = projectsListSelector(getState());
 	dispatch(setPreloader(true));
@@ -86,14 +106,34 @@ export const getProjectsList = (): ProjectsThunkAction => (
 				plainToClass(Project, item, { enableImplicitConversion: true }),
 			);
 			if (oldList.length === 0) {
-				// первый запрос, значитвсе просто
+				// первый запрос, значит все просто
 				dispatch(fetch(newList));
+			} else {
+				const onlyNew = newList
+					.filter((item: Project) => oldList.filter(old => old.id === item.id).length <= 0)
+					.map((item: Project) => ({ ...item, isNew: true }));
+				if (onlyNew.length > 0) {
+					// есть новые
+					const oldTimeout = projectsSeenTimeoutSelector(getState());
+					if (oldTimeout) {
+						window.clearTimeout(oldTimeout);
+						dispatch(setSeenTimeout(null));
+					}
+					// TODO need BEEP
+					const totalList = [...onlyNew, ...oldList];
+					totalList.splice(30, totalList.length - 30);
+					dispatch(fetch(totalList));
+					const timeout = window.setTimeout(() => {
+						dispatch(setSeenProjects());
+					}, 100);
+					dispatch(setSeenTimeout(timeout));
+				}
 			}
 		}
 		dispatch(setPreloader(false));
 	});
 };
 
-export const clearProjectsList = (): ProjectsThunkAction => (dispatch: ProjectsThnkDispatch): void => {
+export const clearProjectsList = () => (dispatch: (action: AnyAction) => void): void => {
 	dispatch(fetch([]));
 };

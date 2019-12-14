@@ -1,5 +1,5 @@
 import { storageKey } from '../config';
-import { UIStateInterface } from 'ducks/ui';
+import { UIState } from 'ducks/ui';
 
 class LocalStorage {
 	private storage: Storage | null;
@@ -16,17 +16,17 @@ class LocalStorage {
 		}
 	}
 
-	saveInterface(ui: UIStateInterface) {
+	saveInterface(ui: UIState): void {
 		if (!this.storage) {
-			return null;
+			return;
 		}
 		this.storage.setItem(`${storageKey}-ui`, JSON.stringify(ui));
 	}
 
-	fetchInterface(): UIStateInterface {
+	fetchInterface(): UIState {
 		const uiStored = this.storage && this.storage.getItem(`${storageKey}-ui`);
 		if (uiStored) {
-			const ui = JSON.parse(uiStored) as UIStateInterface;
+			const ui = JSON.parse(uiStored) as UIState;
 			return { ...ui, isPreloader: false };
 		}
 		return {
@@ -34,7 +34,7 @@ class LocalStorage {
 		};
 	}
 
-	clearStorage() {
+	clearStorage(): void {
 		if (this.storage) {
 			this.storage.clear();
 		}

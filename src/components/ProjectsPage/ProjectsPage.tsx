@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Pullable from 'react-pullable';
 
 import './projects-page.scss';
 import images from '../../images';
-import { clearProjectsList, getProjectsList, projectsListSelector } from 'ducks/projects';
+import { getProjectsList, projectsListSelector } from 'ducks/projects';
 import ProjectItem from 'components/ProjectsPage/ProjectItem/ProjectItem';
 import { uiPreloaderSelector } from 'ducks/ui';
 
@@ -12,7 +12,7 @@ const ProjectsPage: React.FC = () => {
 	const dispatch = useDispatch();
 	const [isRefresh, setRefresh] = useState<boolean>(false);
 	const preloader = useSelector(uiPreloaderSelector);
-	const list = useSelector(projectsListSelector, shallowEqual);
+	const list = useSelector(projectsListSelector);
 
 	useEffect(() => {
 		dispatch(getProjectsList());
@@ -25,9 +25,8 @@ const ProjectsPage: React.FC = () => {
 		}
 	}, [preloader]);
 
-	const handleRefresh = () => {
+	const handleRefresh = (): void => {
 		setRefresh(true);
-		dispatch(clearProjectsList());
 		dispatch(getProjectsList());
 	};
 

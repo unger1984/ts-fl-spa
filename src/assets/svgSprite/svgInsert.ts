@@ -6,7 +6,7 @@ interface SVGOptionsInterface {
 
 const __svg__ = { path: '*.svg', name: 'images/svg/sprite.svg' };
 
-const svgXHR = function(options: SVGOptionsInterface) {
+const svgXHR = function(options: SVGOptionsInterface): void {
 	let url: string | null = null;
 	let baseUrl = undefined;
 
@@ -16,7 +16,7 @@ const svgXHR = function(options: SVGOptionsInterface) {
 	}
 
 	if (!url) {
-		return false;
+		return;
 	}
 
 	const _ajax: XMLHttpRequest = new XMLHttpRequest();
@@ -29,10 +29,10 @@ const svgXHR = function(options: SVGOptionsInterface) {
 
 	const _fullPath = (baseUrl + '/' + url).replace(/([^:]\/)\/+/g, '$1');
 	_ajax.open('GET', _fullPath, true);
-	_ajax.onprogress = function() {
+	_ajax.onprogress = function(): boolean {
 		return false;
 	};
-	_ajax.onload = function() {
+	_ajax.onload = function(): void {
 		if (!_ajax.responseText || _ajax.responseText.substr(0, 4) !== '<svg') {
 			throw Error('Invalid SVG Response');
 		}

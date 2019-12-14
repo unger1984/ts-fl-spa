@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
-import { AnyAction } from 'redux';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { AnyAction, Dispatch } from 'redux';
 
 import api from 'api/index';
 import ApiResponseInterface from '../models/ApiResponseInterface';
@@ -12,28 +11,25 @@ export const moduleName = 'categoryes';
 
 export const FETCH = `${moduleName}/FETCH`;
 
-export interface CategoryesStateInterface {
+export interface CategoryesState {
 	list: object[];
 }
 
-export interface CategoryesActionInterface extends AnyAction {
+export interface CategoryesAction extends AnyAction {
 	readonly type: string;
 	readonly payload: {
 		list: object[];
 	};
 }
 
-const initialState: CategoryesStateInterface = {
+const initialState: CategoryesState = {
 	list: [],
 };
 
 /**
  * Reducer
  **/
-export default (
-	state: CategoryesStateInterface = initialState,
-	action: CategoryesActionInterface,
-): CategoryesStateInterface => {
+export default (state: CategoryesState = initialState, action: CategoryesAction): CategoryesState => {
 	const { type, payload } = action;
 
 	switch (type) {
@@ -47,14 +43,12 @@ export default (
 /**
  * Action Creators
  **/
-export const fetch = (list: object[]): CategoryesActionInterface => ({
+export const fetch = (list: object[]): CategoryesAction => ({
 	type: FETCH,
 	payload: { list },
 });
 
-export const getCategoyesList = (): ThunkAction<void, {}, {}, CategoryesActionInterface> => (
-	dispatch: ThunkDispatch<{}, {}, CategoryesActionInterface>,
-): void => {
+export const getCategoyesList = () => (dispatch: Dispatch): void => {
 	api.categoryes.getCategoryes().then((res: ApiResponseInterface) => {
 		dispatch(fetch(res.data));
 	});
@@ -63,9 +57,8 @@ export const getCategoyesList = (): ThunkAction<void, {}, {}, CategoryesActionIn
 /**
  * Selectors
  **/
-export const categoryesSelector = (state: { categoryes: CategoryesStateInterface }): CategoryesStateInterface =>
-	state.categoryes;
+export const categoryesSelector = (state: { categoryes: CategoryesState }): CategoryesState => state.categoryes;
 export const categoryesListSelector = createSelector(
 	categoryesSelector,
-	(categoryes: CategoryesStateInterface): object[] => categoryes.list,
+	(categoryes: CategoryesState): object[] => categoryes.list,
 );

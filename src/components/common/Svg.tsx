@@ -1,6 +1,6 @@
 import React, { ComponentProps } from 'react';
 
-interface SvgProps extends ComponentProps<any> {
+interface SvgProps extends ComponentProps<'svg'> {
 	name: string;
 }
 
