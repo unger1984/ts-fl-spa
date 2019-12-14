@@ -89,7 +89,10 @@ module.exports = {
 					{
 						loader: 'sass-resources-loader',
 						options: {
-							resources: [path.resolve(__dirname, '../src/scss/_mixins.scss')],
+							resources: [
+								path.resolve(__dirname, '../src/scss/_variables.scss'),
+								path.resolve(__dirname, '../src/scss/_mixins.scss'),
+							],
 						},
 					},
 				],

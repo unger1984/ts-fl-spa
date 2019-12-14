@@ -1,0 +1,44 @@
+.footer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+	background-color: var(--color-brand-main);
+	padding: 10px;
+
+	@media #{$small-mobile} {
+		justify-content: space-between;
+	}
+
+	&__menu {
+		display: flex;
+		cursor: pointer;
+		align-items: center;
+		justify-content: center;
+		margin-left: 40px;
+		margin-right: 40px;
+
+		&-icon {
+			height: 24px;
+			width: 24px;
+		}
+
+		svg {
+			fill: var(--color-menu);
+		}
+
+		&--active {
+			svg {
+				fill: var(--color-menu-active);
+			}
+		}
+	}
+
+	&__reload {
+		cursor: pointer;
+		margin-left: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}

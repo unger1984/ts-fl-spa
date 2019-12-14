@@ -43,7 +43,7 @@ module.exports = {
 			components: path.resolve(__dirname, '../src/components'),
 			common: path.resolve(__dirname, '../src/components/common'),
 			ducks: path.resolve(__dirname, '../src/ducks'),
-			utils: path.resolve(__dirname, '../src/utils'),
+			helpers: path.resolve(__dirname, '../src/helpers'),
 		},
 		plugins: [new DirectoryNamedWebpackPlugin()],
 	},

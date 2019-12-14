@@ -1,0 +1,20 @@
+@import 'variables.css';
+@import '~normalize.css/normalize.css';
+@import 'reboot';
+
+#app {
+	height: 100vh;
+}
+
+.app {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	height: 100vh;
+
+	&__page {
+		display: flex;
+		flex: 1;
+		overflow-y: scroll;
+	}
+}

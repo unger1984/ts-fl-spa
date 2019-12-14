@@ -53,7 +53,8 @@
     "prefer-arrow-callback": 2,
     "prefer-const": 2,
     "prefer-promise-reject-errors": 2,
-    "prettier/prettier": 2
+    "prettier/prettier": 2,
+    "react/prop-types": 0
   },
   "settings": {
     "import/resolver": {

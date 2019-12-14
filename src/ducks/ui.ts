@@ -8,11 +8,11 @@ export const moduleName = 'ui';
 
 export const SET_PRELOADER = `${moduleName}/SET_PRELOADER`;
 
-interface UIStateInterface {
+export interface UIStateInterface {
 	isPreloader: boolean;
 }
 
-interface UIActionInterface extends AnyAction {
+export interface UIActionInterface extends AnyAction {
 	readonly type: string;
 	readonly payload: {
 		preloader?: boolean;
