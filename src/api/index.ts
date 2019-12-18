@@ -15,6 +15,6 @@ export default {
 	},
 	project: {
 		getProjects: (filter: object | null): Promise<ApiResponseInterface> =>
-			axios.get(`/project`, { params: { filter } }).then(sendData),
+			axios.get(`/project`, { params: filter }).then(sendData),
 	},
 };

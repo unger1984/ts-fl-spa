@@ -101,7 +101,7 @@ export const getProjectsList = (): Function => (
 	const oldList = projectsListSelector(getState());
 	dispatch(setPreloader(true));
 	api.project.getProjects(null).then((res: ApiResponseInterface) => {
-		if (res.status) {
+		if (res.success) {
 			const newList = res.data.rows.map((item: object) =>
 				plainToClass(Project, item, { enableImplicitConversion: true }),
 			);

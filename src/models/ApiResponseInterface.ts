@@ -1,5 +1,5 @@
 export default interface ApiResponseInterface {
-	status: boolean;
+	success: boolean;
 	data?: any;
 	error?: {
 		code: number;
