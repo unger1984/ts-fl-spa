@@ -6,4 +6,5 @@ export default class Category {
 	title: string;
 	parentId?: number;
 	parent?: Category;
+	child?: Category[];
 }

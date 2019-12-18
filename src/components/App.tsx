@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Route, useLocation } from 'react-router-dom';
 
-import Test from 'common/Test';
 import { uiPreloaderSelector } from 'ducks/ui';
 import Header from 'common/Header/Header';
 import Footer from 'common/Footer/Footer';
@@ -10,6 +9,7 @@ import ProjectsPage from 'components/ProjectsPage/ProjectsPage';
 import { clearProjectsList, getProjectsList } from 'ducks/projects';
 import SettingsPage from 'components/SettingsPage/SettingsPage';
 import { settingsIntervalSelector, settionsAutoSelector } from 'ducks/settings';
+import CategoryPage from 'components/CategoryPage/CategoryPage';
 
 const getTitle = (pathname: string): string => {
 	switch (pathname) {
@@ -63,7 +63,7 @@ const App: React.FC = () => {
 			<div ref={appPageRef} className="app__page">
 				<Switch>
 					<Route exact path={['/', '/projects']} component={ProjectsPage} />
-					<Route path="/filters" component={Test} />
+					<Route path="/filters" component={CategoryPage} />
 					<Route path="/settings" component={SettingsPage} />
 				</Switch>
 			</div>

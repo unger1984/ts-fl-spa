@@ -3,7 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import './settings-page.scss';
 import Checkbox from 'common/Checkbox/Checkbox';
-import { editInterval, setAuto, settingsIntervalSelector, settionsAutoSelector } from 'ducks/settings';
+import {
+	editInterval,
+	setAuto,
+	settingsIntervalSelector,
+	settionsAutoSelector,
+} from 'ducks/settings';
 
 const SettingsPage: React.FC = () => {
 	const dispatch = useDispatch();

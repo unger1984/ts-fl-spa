@@ -3,6 +3,7 @@ import { AnyAction, Dispatch } from 'redux';
 
 import api from 'api/index';
 import ApiResponseInterface from '../models/ApiResponseInterface';
+import Category from 'models/Category';
 
 /**
  * Constants
@@ -12,13 +13,13 @@ export const moduleName = 'categoryes';
 export const FETCH = `${moduleName}/FETCH`;
 
 export interface CategoryesState {
-	list: object[];
+	list: Category[];
 }
 
 export interface CategoryesAction extends AnyAction {
 	readonly type: string;
 	readonly payload: {
-		list: object[];
+		list: Category[];
 	};
 }
 
@@ -43,7 +44,7 @@ export default (state: CategoryesState = initialState, action: CategoryesAction)
 /**
  * Action Creators
  **/
-export const fetch = (list: object[]): CategoryesAction => ({
+export const fetch = (list: Category[]): CategoryesAction => ({
 	type: FETCH,
 	payload: { list },
 });
@@ -60,5 +61,5 @@ export const getCategoyesList = () => (dispatch: Dispatch): void => {
 export const categoryesSelector = (state: { categoryes: CategoryesState }): CategoryesState => state.categoryes;
 export const categoryesListSelector = createSelector(
 	categoryesSelector,
-	(categoryes: CategoryesState): object[] => categoryes.list,
+	(categoryes: CategoryesState): Category[] => categoryes.list,
 );

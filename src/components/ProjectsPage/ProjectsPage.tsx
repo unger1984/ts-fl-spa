@@ -41,6 +41,9 @@ const ProjectsPage: React.FC = () => {
 				{list.map(item => (
 					<ProjectItem key={item.id} project={item} />
 				))}
+				{!preloader && list.length <= 0 && (
+					<div className="projects-page__refresh">Нет проектов подходящих под фильтр</div>
+				)}
 			</Pullable>
 		</div>
 	);

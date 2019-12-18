@@ -7,6 +7,7 @@ import ApiResponseInterface from 'models/ApiResponseInterface';
 import Project from 'models/Project';
 import { setPreloader } from 'ducks/ui';
 import { ThunkAction } from 'redux-thunk';
+import { settingsAllCategorySelector, settingsCategoryesSelector, SettingsState } from 'ducks/settings';
 
 /**
  * Constants
@@ -96,11 +97,21 @@ export const setSeenProjects = () => (
 
 export const getProjectsList = (): Function => (
 	dispatch: (action: AnyAction | ThunkAction<void, { projects: ProjectsState }, null, ProjectsAction>) => void,
-	getState: () => { projects: ProjectsState },
+	getState: () => { projects: ProjectsState; settings: SettingsState },
 ): void => {
 	const oldList = projectsListSelector(getState());
+	const categoryes = settingsCategoryesSelector(getState());
+	const allCategory = settingsAllCategorySelector(getState());
 	dispatch(setPreloader(true));
-	api.project.getProjects(null).then((res: ApiResponseInterface) => {
+	const filter: any = {};
+	if (!allCategory) {
+		if (categoryes.length > 0) {
+			filter.categoryes = categoryes.join(',');
+		} else {
+			filter.categoryes = '0';
+		}
+	}
+	api.project.getProjects(filter).then((res: ApiResponseInterface) => {
 		if (res.success) {
 			const newList = res.data.rows.map((item: object) =>
 				plainToClass(Project, item, { enableImplicitConversion: true }),
