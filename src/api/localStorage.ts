@@ -1,5 +1,6 @@
 import { storageKey } from '../config';
 import { UIState } from 'ducks/ui';
+import { initialState as InitialSettingsState, SettingsState } from 'ducks/settings';
 
 class LocalStorage {
 	private storage: Storage | null;
@@ -32,6 +33,22 @@ class LocalStorage {
 		return {
 			isPreloader: false,
 		};
+	}
+
+	saveSettings(settings: SettingsState): void {
+		if (!this.storage) {
+			return;
+		}
+		this.storage.setItem(`${storageKey}-settings`, JSON.stringify(settings));
+	}
+
+	fetchSettings(): SettingsState {
+		const settingsStored = this.storage && this.storage.getItem(`${storageKey}-settings`);
+		if (settingsStored) {
+			const settings = JSON.parse(settingsStored) as SettingsState;
+			return settings;
+		}
+		return InitialSettingsState;
 	}
 
 	clearStorage(): void {

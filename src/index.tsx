@@ -11,11 +11,14 @@ import localStorage from 'api/localStorage';
 import configureStore from './redux/configureStore';
 import App from 'components/App';
 import { UIState, uiSelector } from 'ducks/ui';
+import { settingsSelector, SettingsState } from 'ducks/settings';
 
-const store = configureStore({ ui: localStorage.fetchInterface() });
+const store = configureStore({ ui: localStorage.fetchInterface(), settings: localStorage.fetchSettings() });
 store.subscribe(() => {
 	const ui: UIState = uiSelector(store.getState());
+	const settings: SettingsState = settingsSelector(store.getState());
 	localStorage.saveInterface(ui);
+	localStorage.saveSettings(settings);
 });
 
 render(

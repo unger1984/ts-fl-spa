@@ -5,6 +5,7 @@ import { History } from 'history';
 import ui from 'ducks/ui';
 import categoryes from 'ducks/categoryes';
 import projects from 'ducks/projects';
+import settings from 'ducks/settings';
 
 const createRootReducer = (history: History): Reducer =>
 	combineReducers({
@@ -12,6 +13,7 @@ const createRootReducer = (history: History): Reducer =>
 		ui,
 		categoryes,
 		projects,
+		settings,
 	});
 
 export default createRootReducer;
