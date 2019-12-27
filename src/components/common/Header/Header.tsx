@@ -3,7 +3,7 @@ import React, { ComponentProps } from 'react';
 import './header.scss';
 import images from '../../../images';
 
-interface HeaderProps extends ComponentProps<'div'> {
+export interface HeaderProps extends ComponentProps<'div'> {
 	onReload(): void;
 	preloader: boolean;
 	title: string;
@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({ preloader, title, onReload }) => {
 
 	return (
 		<div className="header">
-			<img className="header__logo" src={images.icoLogo} onClick={reload} />
+			<img data-testid="reload-btn" className="header__logo" src={images.icoLogo} onClick={reload} />
 			<div className="header__title">{title}</div>
 			{preloader ? (
 				<img className="header__preloader" src={images.icoPreloader} />

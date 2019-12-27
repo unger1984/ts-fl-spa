@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header with preloader 1`] = `
+<DocumentFragment>
+  <div
+    class="header"
+  >
+    <img
+      class="header__logo"
+      data-testid="reload-btn"
+      src="test-file-stub"
+    />
+    <div
+      class="header__title"
+    >
+      TEST
+    </div>
+    <img
+      class="header__preloader"
+      src="test-file-stub"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Header with title 1`] = `
+<DocumentFragment>
+  <div
+    class="header"
+  >
+    <img
+      class="header__logo"
+      data-testid="reload-btn"
+      src="test-file-stub"
+    />
+    <div
+      class="header__title"
+    >
+      TEST
+    </div>
+    <div
+      class="header__hiden"
+    />
+  </div>
+</DocumentFragment>
+`;

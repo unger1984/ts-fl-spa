@@ -30,7 +30,7 @@ export interface ProjectsAction extends AnyAction {
 	};
 }
 
-const initialState: ProjectsState = {
+export const initialState: ProjectsState = {
 	list: [],
 	seenTimer: null,
 };

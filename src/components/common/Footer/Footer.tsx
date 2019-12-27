@@ -7,7 +7,7 @@ import images from '../../../images';
 import { toggleFullScreen } from 'helpers/helperFullScreen';
 import Svg from 'common/Svg';
 
-interface FooterProps extends ComponentProps<'div'> {
+export interface FooterProps extends ComponentProps<'div'> {
 	preloader: boolean;
 	onReload(): void;
 }
@@ -36,10 +36,10 @@ const Footer: React.FC<FooterProps> = ({ preloader, onReload }) => {
 					<Svg name={item.ico} className="footer__menu-icon" />
 				</NavLink>
 			))}
-			<div className="footer__menu" onClick={handleFullScreen}>
+			<div data-testid="fullscreen-btn" className="footer__menu" onClick={handleFullScreen}>
 				<Svg name="fullscreen" className="footer__menu-icon" />
 			</div>
-			<div className="footer__reload" onClick={handleReload}>
+			<div data-testid="reload-btn" className="footer__reload" onClick={handleReload}>
 				{preloader ? (
 					<img className="footer__menu-icon" src={images.icoPreloader} />
 				) : (

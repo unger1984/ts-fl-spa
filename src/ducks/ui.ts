@@ -19,7 +19,7 @@ export interface UIAction extends AnyAction {
 	};
 }
 
-const initialState: UIState = {
+export const initialState: UIState = {
 	isPreloader: false,
 };
 

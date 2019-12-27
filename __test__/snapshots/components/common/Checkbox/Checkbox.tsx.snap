@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox Checkbox 1`] = `
+<DocumentFragment>
+  <div
+    class="checkbox false false undefined"
+  >
+    <svg
+      height="9"
+      width="12"
+    >
+      <use
+        xlink:href="#icon-checked"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Checkbox Checkbox checked 1`] = `
+<DocumentFragment>
+  <div
+    class="checkbox checkbox--checked false undefined"
+  >
+    <svg
+      height="9"
+      width="12"
+    >
+      <use
+        xlink:href="#icon-checked"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Checkbox Checkbox disabled 1`] = `
+<DocumentFragment>
+  <div
+    class="checkbox false checkbox--disabled undefined"
+  >
+    <svg
+      height="9"
+      width="12"
+    >
+      <use
+        xlink:href="#icon-checked"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Checkbox Checkbox disabled checked 1`] = `
+<DocumentFragment>
+  <div
+    class="checkbox checkbox--checked checkbox--disabled undefined"
+  >
+    <svg
+      height="9"
+      width="12"
+    >
+      <use
+        xlink:href="#icon-checked"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;

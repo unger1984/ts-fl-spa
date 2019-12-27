@@ -23,7 +23,7 @@ export interface CategoryesAction extends AnyAction {
 	};
 }
 
-const initialState: CategoryesState = {
+export const initialState: CategoryesState = {
 	list: [],
 };
 
