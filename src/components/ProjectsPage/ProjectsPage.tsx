@@ -32,7 +32,7 @@ const ProjectsPage: React.FC = () => {
 
 	return (
 		<div className="projects-page">
-			<Pullable onRefresh={handleRefresh}>
+			<Pullable data-testid="pullable" onRefresh={handleRefresh}>
 				{isRefresh && (
 					<div className="projects-page__refresh">
 						<img src={images.icoPreloader} />

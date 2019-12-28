@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoryItem Render 1`] = `
+<DocumentFragment>
+  <div
+    class="category-page__row undefined undefined"
+  >
+    <div
+      class="category-page__title"
+    >
+      Название категории
+    </div>
+    <div
+      class="checkbox false false undefined"
+      data-testid="category-10"
+    >
+      <svg
+        height="9"
+        width="12"
+      >
+        <use
+          xlink:href="#icon-checked"
+        />
+      </svg>
+    </div>
+  </div>
+  <div
+    class="category-page__row subcategory undefined"
+  >
+    <div
+      class="category-page__title"
+    >
+      Название подкатегории
+    </div>
+    <div
+      class="checkbox false false undefined"
+      data-testid="category-11"
+    >
+      <svg
+        height="9"
+        width="12"
+      >
+        <use
+          xlink:href="#icon-checked"
+        />
+      </svg>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CategoryItem click 1`] = `
+<DocumentFragment>
+  <div
+    class="category-page__row undefined undefined"
+  >
+    <div
+      class="category-page__title"
+    >
+      Название категории
+    </div>
+    <div
+      class="checkbox checkbox--checked false undefined"
+      data-testid="category-10"
+    >
+      <svg
+        height="9"
+        width="12"
+      >
+        <use
+          xlink:href="#icon-checked"
+        />
+      </svg>
+    </div>
+  </div>
+  <div
+    class="category-page__row subcategory undefined"
+  >
+    <div
+      class="category-page__title"
+    >
+      Название подкатегории
+    </div>
+    <div
+      class="checkbox false false undefined"
+      data-testid="category-11"
+    >
+      <svg
+        height="9"
+        width="12"
+      >
+        <use
+          xlink:href="#icon-checked"
+        />
+      </svg>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CategoryItem disabled 1`] = `
+<DocumentFragment>
+  <div
+    class="category-page__row undefined disabled"
+  >
+    <div
+      class="category-page__title"
+    >
+      Название категории
+    </div>
+    <div
+      class="checkbox checkbox--checked checkbox--disabled undefined"
+      data-testid="category-10"
+    >
+      <svg
+        height="9"
+        width="12"
+      >
+        <use
+          xlink:href="#icon-checked"
+        />
+      </svg>
+    </div>
+  </div>
+  <div
+    class="category-page__row subcategory disabled"
+  >
+    <div
+      class="category-page__title"
+    >
+      Название подкатегории
+    </div>
+    <div
+      class="checkbox checkbox--checked checkbox--disabled undefined"
+      data-testid="category-11"
+    >
+      <svg
+        height="9"
+        width="12"
+      >
+        <use
+          xlink:href="#icon-checked"
+        />
+      </svg>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoryItem Render 1`] = `
+<DocumentFragment>
+  <div
+    class="category-page"
+  >
+    <div
+      class="category-page__row"
+    >
+      <div
+        class="category-page__title"
+      >
+        Все категории:
+      </div>
+      <div
+        class="checkbox checkbox--checked false undefined"
+        data-testid="chk-all"
+      >
+        <svg
+          height="9"
+          width="12"
+        >
+          <use
+            xlink:href="#icon-checked"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CategoryItem click all 1`] = `
+<DocumentFragment>
+  <div
+    class="category-page"
+  >
+    <div
+      class="category-page__row"
+    >
+      <div
+        class="category-page__title"
+      >
+        Все категории:
+      </div>
+      <div
+        class="checkbox false false undefined"
+        data-testid="chk-all"
+      >
+        <svg
+          height="9"
+          width="12"
+        >
+          <use
+            xlink:href="#icon-checked"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

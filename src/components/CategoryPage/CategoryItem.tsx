@@ -29,7 +29,12 @@ const CategoryItem: React.FC<{ item: Category; subcategory?: boolean; disabled?:
 		<>
 			<div className={`category-page__row ${subcategory && 'subcategory'} ${disabled && 'disabled'}`}>
 				<div className="category-page__title">{title}</div>
-				<Checkbox checked={isCheked()} disabled={disabled} onClick={handleCheck} />
+				<Checkbox
+					data-testid={`category-${id}`}
+					checked={isCheked()}
+					disabled={disabled}
+					onClick={handleCheck}
+				/>
 			</div>
 			{child &&
 				child.map(category => (

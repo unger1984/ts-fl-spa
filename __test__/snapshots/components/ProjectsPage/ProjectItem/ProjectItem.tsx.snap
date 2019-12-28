@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectItem Render 1`] = `
+<DocumentFragment>
+  <a
+    class="project-item "
+    href="https://yandex.ru"
+    rel="nofollow noopener"
+    target="_blank"
+  >
+    <div
+      class="project-item__title"
+    >
+      <h4>
+        Название проекта
+      </h4>
+      <div
+        class="project-item__title-info"
+      >
+        <div>
+          28.10.2019 00:00
+        </div>
+        <div>
+          1000
+        </div>
+      </div>
+    </div>
+    <div
+      class="LinesEllipsis  "
+    >
+      Описание проекта
+      <wbr />
+    </div>
+  </a>
+</DocumentFragment>
+`;

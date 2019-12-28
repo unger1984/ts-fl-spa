@@ -6,15 +6,6 @@ import renderWithRedux from 'models/RenderWithRedux';
 import { toggleFullScreen } from 'helpers/helperFullScreen';
 import ProjectState, { initialState as ProjectsInitialState } from 'models/ProjectState';
 
-jest.mock('../../../config.ts', () => ({
-	__URL_BACKEND__: '',
-	menu: [
-		{ key: 'projects', ico: 'list', title: 'Проекты' },
-		{ key: 'filters', ico: 'filter', title: 'Фильтры' },
-		{ key: 'settings', ico: 'settings', title: 'Настройки' },
-	],
-}));
-
 jest.mock('helpers/helperFullScreen', () => ({
 	// eslint-disable-next-line @typescript-eslint/no-empty-function
 	toggleFullScreen: jest.fn(() => {}),

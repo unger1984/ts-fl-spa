@@ -24,7 +24,7 @@ const CategoryPage: React.FC = () => {
 		<div className="category-page">
 			<div className="category-page__row">
 				<div className="category-page__title">Все категории:</div>
-				<Checkbox checked={allCategory} onClick={handleSetAllCategory} />
+				<Checkbox data-testid="chk-all" checked={allCategory} onClick={handleSetAllCategory} />
 			</div>
 			{categoryes.map(category => (
 				<CategoryItem key={category.id} disabled={allCategory} item={category} />

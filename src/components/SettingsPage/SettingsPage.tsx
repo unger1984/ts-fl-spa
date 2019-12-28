@@ -3,12 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import './settings-page.scss';
 import Checkbox from 'common/Checkbox/Checkbox';
-import {
-	editInterval,
-	setAuto,
-	settingsIntervalSelector,
-	settionsAutoSelector,
-} from 'ducks/settings';
+import { editInterval, setAuto, settingsIntervalSelector, settionsAutoSelector } from 'ducks/settings';
 
 const SettingsPage: React.FC = () => {
 	const dispatch = useDispatch();
@@ -27,12 +22,19 @@ const SettingsPage: React.FC = () => {
 		<div className="settings-page">
 			<div className="settings-page__row">
 				<div className="settings-page__title">Автообновление:</div>
-				<Checkbox checked={isAuto} onClick={handleSetAuto} />
+				<Checkbox data-testid="chk-auto" checked={isAuto} onClick={handleSetAuto} />
 			</div>
 			{isAuto && (
 				<div className="settings-page__row">
 					<div className="settings-page__title">Интервал обновления:</div>
-					<input value={interval} type="number" min={5} step={1} onChange={handleIntervalChange} />
+					<input
+						data-testid="inp-interval"
+						value={interval}
+						type="number"
+						min={5}
+						step={1}
+						onChange={handleIntervalChange}
+					/>
 				</div>
 			)}
 		</div>
