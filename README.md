@@ -18,4 +18,5 @@ Uncompleted
 * React (with hooks)
 * Redux (redux-thunk, ducks)
 * Axios
+* Unit Tests
 
